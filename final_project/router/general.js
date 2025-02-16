@@ -102,12 +102,12 @@ public_users.get('/review/:isbn',function (req, res) {
   let reviews;
   for (let key in books){
     if(books[key].isbn === isbnForRev){
-        review = books[key].reviews;
+        reviews = books[key].reviews;
         break;
     }
   }
-  if(review){
-    return res.send("These are the reviews for isbn: " + req.params.isbn + ", " + reviews)
+  if(reviews){
+    return res.send("These are these reviews for isbn: " + req.params.isbn + ", " + JSON.stringify(reviews))
   }else{
     return res.status(404).json({message: "No book or review found under this isbn"});
   }
